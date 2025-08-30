@@ -3,8 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const resultsContainer = document.getElementById('results-container');
     const resultsBody = document.getElementById('results-body');
     const statusDiv = document.getElementById('status');
-    const allSameCheckbox = document.getElementById('allSame');
+    const xxxxCheckbox = document.getElementById('allSame');
     const ascendingCheckbox = document.getElementById('ascending');
+    const descendingCheckbox = document.getElementById('descending');
     const xxyyCheckbox = document.getElementById('xxyy');
     const xxxyCheckbox = document.getElementById('xxxy');
     const xyyyCheckbox = document.getElementById('xyyy');
@@ -21,8 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Get filter values
         const filters = {
-            allSame: allSameCheckbox.checked,
+            xxxx: xxxxCheckbox.checked,
             ascending: ascendingCheckbox.checked,
+            descending: descendingCheckbox.checked,
             xxyy: xxyyCheckbox.checked,
             xxxy: xxxyCheckbox.checked,
             xyyy: xyyyCheckbox.checked,

@@ -47,7 +47,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
 // --- Filtering Logic ---
 function filterData(data, filters) {
-    if (!filters.allSame && !filters.ascending && !filters.xxyy && !filters.xxxy && !filters.xyyy && !filters.xyxy &&
+    if (!filters.xxxx && !filters.ascending && !filters.descending && !filters.xxyy && !filters.xxxy && !filters.xyyy && !filters.xyxy &&
         !filters.recursiveSum && !filters.excludeDigits) {
         // If no filters are selected, return all data
         return data;
@@ -57,8 +57,9 @@ function filterData(data, filters) {
         // The vehicle number might have letters, so we extract the numeric part
         const numericPart = item.number.slice(-4);
 
-        let matchesAllSame = !filters.allSame || isAllSame(numericPart);
+        let matchesXXXX = !filters.xxxx || isXXXX(numericPart);
         let matchesAscending = !filters.ascending || isAscending(numericPart);
+        let matchesDescending = !filters.descending || isDescending(numericPart);
         let matchesXXYY = !filters.xxyy || isXXYY(numericPart);
         let matchesXXXY = !filters.xxxy || isXXXY(numericPart);
         let matchesXYYY = !filters.xyyy || isXYYY(numericPart);
@@ -66,12 +67,12 @@ function filterData(data, filters) {
         let matchesRecursiveSum = !filters.recursiveSum || hasRecursiveSum(numericPart, filters.recursiveSumValue);
         let doesNotHaveExcludedDigits = !filters.excludeDigits || !containsExcludedDigits(numericPart, filters.excludeDigitsValue);
 
-        return matchesAllSame && matchesAscending && matchesXXYY && matchesXXXY && matchesXYYY && matchesXYXY &&
+        return matchesXXXX && matchesAscending && matchesDescending && matchesXXYY && matchesXXXY && matchesXYYY && matchesXYXY &&
                matchesRecursiveSum && doesNotHaveExcludedDigits;
     });
 }
 
-function isAllSame(s) {
+function isXXXX(s) {
     if (s.length <= 1) return false; // Not very "special" if it's one digit
     const first = s[0];
     for (let i = 1; i < s.length; i++) {
@@ -87,6 +88,19 @@ function isAscending(s) {
         const current = parseInt(s[i]);
         const next = parseInt(s[i+1]);
         if (next < current) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function isDescending(s) {
+    if (s.length <= 1) return false;
+    for (let i = 0; i < s.length - 1; i++) {
+        // Check if the next digit is less than the current
+        const current = parseInt(s[i]);
+        const next = parseInt(s[i+1]);
+        if (next > current) {
             return false;
         }
     }
