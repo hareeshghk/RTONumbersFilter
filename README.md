@@ -15,17 +15,55 @@ When purchasing a new vehicle or seeking a special registration number through R
 ## ✨ Features
 
 ### 🔢 Pattern Filters
-- **All Same Digits** - Find numbers like 8888, 7777, 1111
-- **Ascending Sequence** - Find numbers like 1234, 2345, 6789
-- **XXYY Pattern** - Find numbers like 1122, 3344, 9988
-- **XXXY Pattern** - Find numbers like 1112, 5556, 7779
-- **XYYY Pattern** - Find numbers like 1222, 3555, 8999
-- **XYXY Pattern** - Find numbers like 1212, 3535, 9898
+- **All Same Digits (XXXX)** - Find numbers where all digits are identical
+  - Examples: `0000`, `1111`, `2222`, `3333`, `4444`, `5555`, `6666`, `7777`, `8888`, `9999`
+  - Perfect for: Lucky numbers, easy-to-remember combinations
+
+- **Ascending Sequence** - Find numbers with digits in ascending order
+  - Examples: `0123`, `1234`, `2345`, `3456`, `4567`, `5678`, `6789`, `0124`, `1469`
+  - Perfect for: Progressive sequences, logical patterns
+
+- **Descending Sequence** - Find numbers with digits in descending order
+  - Examples: `9876`, `8765`, `7654`, `6543`, `5432`, `4321`, `3210`, `9421`, `8520`
+  - Perfect for: Countdown patterns, reverse sequences
+
+- **XXYY Pattern** - Find numbers with two pairs of identical digits
+  - Examples: `1122`, `3344`, `5566`, `7788`, `9900`, `0011`, `2255`, `4477`
+  - Perfect for: Symmetric patterns, balanced combinations
+
+- **XXXY Pattern** - Find numbers with three identical digits followed by one different
+  - Examples: `1112`, `2223`, `3334`, `4445`, `5556`, `6667`, `7778`, `8889`, `9990`
+  - Perfect for: Emphasis patterns, dominant digit themes
+
+- **XYYY Pattern** - Find numbers with one digit followed by three identical digits
+  - Examples: `1222`, `2333`, `3444`, `4555`, `5666`, `6777`, `7888`, `8999`, `9000`
+  - Perfect for: Trailing emphasis, memorable endings
+
+- **XYXY Pattern** - Find numbers with alternating pair patterns
+  - Examples: `1212`, `2323`, `3434`, `4545`, `5656`, `6767`, `7878`, `8989`, `9090`
+  - Perfect for: Rhythmic patterns, alternating sequences
 
 ### 🎲 Advanced Filters
+
 - **Recursive Sum Filter** - Filter by numerological digit sum (1-9)
-- **Exclude Digits** - Avoid unlucky numbers or unwanted digits
+  - How it works: Adds all digits repeatedly until single digit remains
+  - Examples:
+    - `1234` → 1+2+3+4=10 → 1+0=1 (Sum: 1)
+    - `9876` → 9+8+7+6=30 → 3+0=3 (Sum: 3)
+    - `5555` → 5+5+5+5=20 → 2+0=2 (Sum: 2)
+    - `7689` → 7+6+8+9=30 → 3+0=3 (Sum: 3)
+  - Perfect for: Numerology enthusiasts, spiritual number selection
+
+- **Exclude Digits** - Avoid specific digits in your number
+  - Examples of exclusions:
+    - Exclude `0, 4`: Will filter out `1024`, `4567`, `8904`, `4444`
+    - Exclude `7`: Will filter out `1237`, `7777`, `5679`, `0017`
+    - Exclude `0, 8, 9`: Will filter out `1089`, `8765`, `9999`, `0123`
+  - Perfect for: Avoiding unlucky numbers, cultural preferences
+
 - **Price Sorting** - Automatically sorts results by price (lowest first)
+  - Shows most affordable options at the top
+  - Perfect for: Budget-conscious buyers, finding the best deals
 
 ### 🏆 Smart Features
 - Real-time scanning of RTO portal pages
@@ -50,6 +88,31 @@ When purchasing a new vehicle or seeking a special registration number through R
 4. Click "Fetch Filtered Numbers"
 5. View sorted results with prices and bidder information
 
+## 📋 Complete Filter Reference
+
+### Pattern-Based Filters (Fixed Patterns)
+| Filter Name | Pattern | Example Numbers | Description |
+|-------------|---------|-----------------|-------------|
+| **All Same (XXXX)** | All digits identical | `0000`, `1111`, `7777`, `8888` | Perfect for memorable, lucky numbers |
+| **Ascending** | Digits in increasing order | `0123`, `1234`, `2345`, `6789` | Progressive, logical sequences |
+| **Descending** | Digits in decreasing order | `9876`, `8765`, `4321`, `3210` | Countdown, reverse patterns |
+| **XXYY** | Two pairs of identical digits | `1122`, `3344`, `7788`, `9900` | Symmetric, balanced patterns |
+| **XXXY** | Three same + one different | `1112`, `5556`, `7778`, `9990` | Emphasis on dominant digit |
+| **XYYY** | One different + three same | `1222`, `3555`, `7888`, `9000` | Strong trailing emphasis |
+| **XYXY** | Alternating pair pattern | `1212`, `3535`, `7878`, `9090` | Rhythmic, alternating design |
+
+### Input-Based Filters (User Configurable)
+| Filter Name | Input Type | Examples | How It Works |
+|-------------|------------|----------|--------------|
+| **Recursive Sum** | Number (1-9) | Sum=1: `1000`, `1234`<br>Sum=7: `1969`, `2500` | Adds digits repeatedly until single digit<br>`1234` → 1+2+3+4=10 → 1+0=1 |
+| **Exclude Digits** | Comma/space separated | Exclude `0,4`: Filters out `1024`, `4567`<br>Exclude `7`: Filters out `1237`, `7777` | Removes numbers containing specified digits |
+
+### Combination Filtering
+- **Multiple Filters**: You can select multiple filters simultaneously
+- **AND Logic**: Numbers must match ALL selected criteria
+- **Price Sorting**: Results automatically sorted by price (lowest first)
+- **Real-time**: Instant filtering as you select/deselect options
+
 ## 🎪 Use Cases
 
 ### For Vehicle Buyers
@@ -72,12 +135,24 @@ When purchasing a new vehicle or seeking a special registration number through R
 
 ### Supported Patterns
 ```
-All Same: 0000, 1111, 2222, ..., 9999
-Ascending: 0123, 1234, 2345, ..., 6789
-XXYY: 1122, 3344, 5566, 7788, 9900
-XXXY: 1112, 3334, 5556, 7778, 9990
-XYYY: 1222, 3444, 5666, 7888, 9000
-XYXY: 1212, 3434, 5656, 7878, 9090
+All Same (XXXX): 0000, 1111, 2222, 3333, 4444, 5555, 6666, 7777, 8888, 9999
+Ascending: 0123, 1234, 2345, 3456, 4567, 5678, 6789, 0124, 1469, 2579
+Descending: 9876, 8765, 7654, 6543, 5432, 4321, 3210, 9421, 8520, 7531
+XXYY: 1122, 3344, 5566, 7788, 9900, 0011, 2255, 4477, 6699, 8811
+XXXY: 1112, 2223, 3334, 4445, 5556, 6667, 7778, 8889, 9990, 0001
+XYYY: 1222, 2333, 3444, 4555, 5666, 6777, 7888, 8999, 9000, 0111
+XYXY: 1212, 2323, 3434, 4545, 5656, 6767, 7878, 8989, 9090, 0101
+
+Recursive Sum Examples:
+- Sum = 1: 1000, 0100, 0010, 0001, 1234 (1+2+3+4=10→1+0=1)
+- Sum = 3: 1200, 0300, 2100, 9876 (9+8+7+6=30→3+0=3)
+- Sum = 7: 1600, 2500, 3400, 1969 (1+9+6+9=25→2+5=7)
+- Sum = 9: 1800, 2700, 3600, 4500, 9999 (9+9+9+9=36→3+6=9)
+
+Exclude Digits Examples:
+- Exclude "0,4": Numbers like 1234, 4567, 0123, 8904 will be filtered out
+- Exclude "7": Numbers like 1237, 7777, 5679, 0017 will be filtered out
+- Exclude "0,8,9": Numbers like 1089, 8765, 9999, 0123 will be filtered out
 ```
 
 ### Architecture
