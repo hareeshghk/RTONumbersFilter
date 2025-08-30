@@ -7,22 +7,27 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
-            width: 450px;
+            width: 480px;
             font-family: 'Inter', sans-serif;
         }
         @import url('https://rsms.me/inter/inter.css');
         
-        /* Ensure each filter is on its own line */
+        /* Ensure each filter is clearly on its own line */
         .filter-item {
             display: block !important;
             width: 100% !important;
-            margin-bottom: 8px !important;
+            margin-bottom: 12px !important;
+            clear: both;
         }
         
         .filter-container {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
+            display: block;
+        }
+        
+        /* Add clear line breaks between filters */
+        .filter-item:not(:last-child) {
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 8px;
         }
     </style>
 </head>
@@ -38,41 +43,56 @@
         </button>
 
         <div class="mt-4">
-            <h2 class="font-semibold mb-3">Filter Conditions:</h2>
-            <div class="space-y-3">
+            <h2 class="font-semibold mb-4 text-lg">Filter Conditions:</h2>
+            <div class="filter-container">
                 <!-- Basic Pattern Filters -->
-                <div class="space-y-2">
-                    <label class="flex items-center p-3 rounded-lg bg-white shadow-sm border border-slate-200 hover:bg-slate-50 transition-colors">
-                        <input type="checkbox" id="allSame" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                <div class="filter-item">
+                    <label class="flex items-center p-3 rounded-lg bg-white shadow-sm border border-slate-200 hover:bg-slate-50 transition-colors w-full">
+                        <input type="checkbox" id="allSame" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 flex-shrink-0">
                         <span class="ml-3 text-sm text-slate-700">All digits are the same (e.g., 8888)</span>
                     </label>
-                    
-                    <label class="flex items-center p-3 rounded-lg bg-white shadow-sm border border-slate-200 hover:bg-slate-50 transition-colors">
-                        <input type="checkbox" id="ascending" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                </div>
+                
+                <div class="filter-item">
+                    <label class="flex items-center p-3 rounded-lg bg-white shadow-sm border border-slate-200 hover:bg-slate-50 transition-colors w-full">
+                        <input type="checkbox" id="ascending" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 flex-shrink-0">
                         <span class="ml-3 text-sm text-slate-700">Digits are ascending (e.g., 1234)</span>
                     </label>
-                    
-                    <label class="flex items-center p-3 rounded-lg bg-white shadow-sm border border-slate-200 hover:bg-slate-50 transition-colors">
-                        <input type="checkbox" id="xxyy" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                </div>
+                
+                <div class="filter-item">
+                    <label class="flex items-center p-3 rounded-lg bg-white shadow-sm border border-slate-200 hover:bg-slate-50 transition-colors w-full">
+                        <input type="checkbox" id="xxyy" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 flex-shrink-0">
                         <span class="ml-3 text-sm text-slate-700">XXYY pattern (e.g., 1122, 3344)</span>
                     </label>
-                    
-                    <label class="flex items-center p-3 rounded-lg bg-white shadow-sm border border-slate-200 hover:bg-slate-50 transition-colors">
-                        <input type="checkbox" id="xxxy" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                </div>
+                
+                <div class="filter-item">
+                    <label class="flex items-center p-3 rounded-lg bg-white shadow-sm border border-slate-200 hover:bg-slate-50 transition-colors w-full">
+                        <input type="checkbox" id="xxxy" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 flex-shrink-0">
                         <span class="ml-3 text-sm text-slate-700">XXXY pattern (e.g., 1112, 5556)</span>
                     </label>
-                    
-                    <label class="flex items-center p-3 rounded-lg bg-white shadow-sm border border-slate-200 hover:bg-slate-50 transition-colors">
-                        <input type="checkbox" id="xyyy" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                </div>
+                
+                <div class="filter-item">
+                    <label class="flex items-center p-3 rounded-lg bg-white shadow-sm border border-slate-200 hover:bg-slate-50 transition-colors w-full">
+                        <input type="checkbox" id="xyyy" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 flex-shrink-0">
                         <span class="ml-3 text-sm text-slate-700">XYYY pattern (e.g., 1222, 3555)</span>
+                    </label>
+                </div>
+
+                <div class="filter-item">
+                    <label class="flex items-center p-3 rounded-lg bg-white shadow-sm border border-slate-200 hover:bg-slate-50 transition-colors w-full">
+                        <input type="checkbox" id="xyxy" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 flex-shrink-0">
+                        <span class="ml-3 text-sm text-slate-700">XYXY pattern (e.g., 1212, 3535)</span>
                     </label>
                 </div>
                 
                 <!-- Advanced Input-based Filters -->
-                <div class="space-y-2">
-                    <div class="p-3 rounded-lg bg-gradient-to-r from-blue-50 to-indigo-50 shadow-sm border border-blue-200">
+                <div class="filter-item">
+                    <div class="p-3 rounded-lg bg-gradient-to-r from-blue-50 to-indigo-50 shadow-sm border border-blue-200 w-full">
                         <label class="flex items-center mb-2">
-                            <input type="checkbox" id="recursiveSum" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                            <input type="checkbox" id="recursiveSum" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 flex-shrink-0">
                             <span class="ml-3 text-sm font-medium text-slate-700">Recursive sum equals:</span>
                         </label>
                         <input type="number" id="recursiveSumValue" placeholder="Enter digit (1-9)" min="1" max="9" 
@@ -81,10 +101,12 @@
                             <strong>Example:</strong> 1234 → 1+2+3+4=10 → 1+0=1
                         </div>
                     </div>
-                    
-                    <div class="p-3 rounded-lg bg-gradient-to-r from-red-50 to-pink-50 shadow-sm border border-red-200">
+                </div>
+                
+                <div class="filter-item">
+                    <div class="p-3 rounded-lg bg-gradient-to-r from-red-50 to-pink-50 shadow-sm border border-red-200 w-full">
                         <label class="flex items-center mb-2">
-                            <input type="checkbox" id="excludeDigits" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                            <input type="checkbox" id="excludeDigits" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 flex-shrink-0">
                             <span class="ml-3 text-sm font-medium text-slate-700">Exclude digits:</span>
                         </label>
                         <input type="text" id="excludeDigitsValue" placeholder="e.g., 0, 4, 7" 

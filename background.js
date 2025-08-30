@@ -47,7 +47,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
 // --- Filtering Logic ---
 function filterData(data, filters) {
-    if (!filters.allSame && !filters.ascending && !filters.xxyy && !filters.xxxy && !filters.xyyy && 
+    if (!filters.allSame && !filters.ascending && !filters.xxyy && !filters.xxxy && !filters.xyyy && !filters.xyxy &&
         !filters.recursiveSum && !filters.excludeDigits) {
         // If no filters are selected, return all data
         return data;
@@ -62,10 +62,11 @@ function filterData(data, filters) {
         let matchesXXYY = !filters.xxyy || isXXYY(numericPart);
         let matchesXXXY = !filters.xxxy || isXXXY(numericPart);
         let matchesXYYY = !filters.xyyy || isXYYY(numericPart);
+        let matchesXYXY = !filters.xyxy || isXYXY(numericPart);
         let matchesRecursiveSum = !filters.recursiveSum || hasRecursiveSum(numericPart, filters.recursiveSumValue);
         let doesNotHaveExcludedDigits = !filters.excludeDigits || !containsExcludedDigits(numericPart, filters.excludeDigitsValue);
 
-        return matchesAllSame && matchesAscending && matchesXXYY && matchesXXXY && matchesXYYY && 
+        return matchesAllSame && matchesAscending && matchesXXYY && matchesXXXY && matchesXYYY && matchesXYXY &&
                matchesRecursiveSum && doesNotHaveExcludedDigits;
     });
 }
@@ -105,6 +106,11 @@ function isXXXY(s) {
 function isXYYY(s) {
     if (s.length !== 4) return false;
     return s[1] === s[2] && s[2] === s[3]
+}
+
+function isXYXY(s) {
+    if (s.length !== 4) return false;
+    return s[0] === s[2] && s[1] === s[3]
 }
 
 function getRecursiveSum(s) {

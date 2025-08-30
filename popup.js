@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const xxyyCheckbox = document.getElementById('xxyy');
     const xxxyCheckbox = document.getElementById('xxxy');
     const xyyyCheckbox = document.getElementById('xyyy');
+    const xyxyCheckbox = document.getElementById('xyxy');
     const recursiveSumCheckbox = document.getElementById('recursiveSum');
     const recursiveSumValue = document.getElementById('recursiveSumValue');
     const excludeDigitsCheckbox = document.getElementById('excludeDigits');
@@ -25,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             xxyy: xxyyCheckbox.checked,
             xxxy: xxxyCheckbox.checked,
             xyyy: xyyyCheckbox.checked,
+            xyxy: xyxyCheckbox.checked,
             recursiveSum: recursiveSumCheckbox.checked,
             recursiveSumValue: recursiveSumValue.value,
             excludeDigits: excludeDigitsCheckbox.checked,
