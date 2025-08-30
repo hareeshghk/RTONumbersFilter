@@ -8,6 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const xxyyCheckbox = document.getElementById('xxyy');
     const xxxyCheckbox = document.getElementById('xxxy');
     const xyyyCheckbox = document.getElementById('xyyy');
+    const recursiveSumCheckbox = document.getElementById('recursiveSum');
+    const recursiveSumValue = document.getElementById('recursiveSumValue');
+    const excludeDigitsCheckbox = document.getElementById('excludeDigits');
+    const excludeDigitsValue = document.getElementById('excludeDigitsValue');
 
     fetchButton.addEventListener('click', () => {
         statusDiv.textContent = 'Fetching and filtering numbers...';
@@ -20,7 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
             ascending: ascendingCheckbox.checked,
             xxyy: xxyyCheckbox.checked,
             xxxy: xxxyCheckbox.checked,
-            xyyy: xyyyCheckbox.checked
+            xyyy: xyyyCheckbox.checked,
+            recursiveSum: recursiveSumCheckbox.checked,
+            recursiveSumValue: recursiveSumValue.value,
+            excludeDigits: excludeDigitsCheckbox.checked,
+            excludeDigitsValue: excludeDigitsValue.value
         };
         
         // Send a message to the background script to start the process
@@ -41,6 +49,25 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Enable/disable input fields based on checkbox state
+    recursiveSumCheckbox.addEventListener('change', () => {
+        recursiveSumValue.disabled = !recursiveSumCheckbox.checked;
+        if (!recursiveSumCheckbox.checked) {
+            recursiveSumValue.value = '';
+        }
+    });
+
+    excludeDigitsCheckbox.addEventListener('change', () => {
+        excludeDigitsValue.disabled = !excludeDigitsCheckbox.checked;
+        if (!excludeDigitsCheckbox.checked) {
+            excludeDigitsValue.value = '';
+        }
+    });
+
+    // Initialize input field states
+    recursiveSumValue.disabled = true;
+    excludeDigitsValue.disabled = true;
 
     function renderResults(numbers) {
         if (numbers.length === 0) {
@@ -79,4 +106,3 @@ document.addEventListener('DOMContentLoaded', () => {
         resultsContainer.classList.remove('hidden'); // Show the results table
     }
 });
-

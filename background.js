@@ -47,7 +47,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
 // --- Filtering Logic ---
 function filterData(data, filters) {
-    if (!filters.allSame && !filters.ascending && !filters.xxyy && !filters.xxxy && !filters.xyyy) {
+    if (!filters.allSame && !filters.ascending && !filters.xxyy && !filters.xxxy && !filters.xyyy && 
+        !filters.recursiveSum && !filters.excludeDigits) {
         // If no filters are selected, return all data
         return data;
     }
@@ -61,8 +62,11 @@ function filterData(data, filters) {
         let matchesXXYY = !filters.xxyy || isXXYY(numericPart);
         let matchesXXXY = !filters.xxxy || isXXXY(numericPart);
         let matchesXYYY = !filters.xyyy || isXYYY(numericPart);
+        let matchesRecursiveSum = !filters.recursiveSum || hasRecursiveSum(numericPart, filters.recursiveSumValue);
+        let doesNotHaveExcludedDigits = !filters.excludeDigits || !containsExcludedDigits(numericPart, filters.excludeDigitsValue);
 
-        return matchesAllSame && matchesAscending && matchesXXYY && matchesXXXY && matchesXYYY;
+        return matchesAllSame && matchesAscending && matchesXXYY && matchesXXXY && matchesXYYY && 
+               matchesRecursiveSum && doesNotHaveExcludedDigits;
     });
 }
 
@@ -101,4 +105,23 @@ function isXXXY(s) {
 function isXYYY(s) {
     if (s.length !== 4) return false;
     return s[1] === s[2] && s[2] === s[3]
+}
+
+function getRecursiveSum(s) {
+    let sum = s.split('').reduce((acc, digit) => acc + parseInt(digit), 0);
+    while (sum >= 10) {
+        sum = sum.toString().split('').reduce((acc, digit) => acc + parseInt(digit), 0);
+    }
+    return sum;
+}
+
+function hasRecursiveSum(s, targetSum) {
+    if (!targetSum || targetSum < 1 || targetSum > 9) return true; // If no valid target sum, don't filter
+    return getRecursiveSum(s) === parseInt(targetSum);
+}
+
+function containsExcludedDigits(s, excludedDigits) {
+    if (!excludedDigits || excludedDigits.trim() === '') return false; // If no excluded digits, don't filter
+    const excludedSet = new Set(excludedDigits.replace(/\s+/g, '').split(''));
+    return s.split('').some(digit => excludedSet.has(digit));
 }
