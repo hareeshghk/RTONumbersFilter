@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RTO Fancy Number Finder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            width: 380px;
+            font-family: 'Inter', sans-serif;
+        }
+        @import url('https://rsms.me/inter/inter.css');
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+    <div class="p-4">
+        <div class="flex items-center space-x-2 mb-4">
+            <img src="images/icon48.png" alt="icon" class="w-8 h-8">
+            <h1 class="text-xl font-bold text-slate-900">RTO Number Finder</h1>
+        </div>
+
+        <button id="fetchNumbersBtn" class="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+            Fetch Available Numbers
+        </button>
+
+        <div class="mt-4">
+            <h2 class="font-semibold mb-2">Filter Conditions:</h2>
+            <div class="space-y-2">
+                <label class="flex items-center p-2 rounded-lg bg-white shadow-sm border border-slate-200">
+                    <input type="checkbox" id="allSame" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                    <span class="ml-2 text-sm text-slate-700">All digits are the same (e.g., 8888)</span>
+                </label>
+                <label class="flex items-center p-2 rounded-lg bg-white shadow-sm border border-slate-200">
+                    <input type="checkbox" id="ascending" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                    <span class="ml-2 text-sm text-slate-700">Digits are ascending (e.g., 1234)</span>
+                </label>
+            </div>
+        </div>
+
+        <hr class="my-4 border-slate-200">
+
+        <div id="status" class="text-center text-slate-500 italic mb-2">
+            Click the button to fetch numbers from the active RTO page.
+        </div>
+        
+        <div id="results-container" class="mt-2 max-h-64 overflow-y-auto hidden">
+             <table class="w-full text-sm text-left text-slate-600">
+                <thead class="text-xs text-slate-700 uppercase bg-slate-100 sticky top-0">
+                    <tr>
+                        <th scope="col" class="px-4 py-2">Number</th>
+                        <th scope="col" class="px-4 py-2 text-right">Price (₹)</th>
+                        <th scope="col" class="px-4 py-2 text-center">Bidders</th>
+                    </tr>
+                </thead>
+                <tbody id="results-body">
+                    <!-- Results will be injected here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
+

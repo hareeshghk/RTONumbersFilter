@@ -1,0 +1,63 @@
+RTO Fancy Number Finder: Design and Architecture
+This document outlines the design of the Chrome extension and provides a guide for adapting it to the live RTO portal.
+
+1. High-Level Architecture
+The extension is composed of four main parts that work together:
+
+Popup (popup.html & popup.js): This is the user interface you see when you click the extension icon. It's responsible for taking user input (filter selections) and displaying the final results. It doesn't do any heavy lifting itself.
+
+Background Script (background.js): This is the central coordinator. It runs in the background, listening for events. It manages the injection of the content script and performs all the data filtering. Keeping the filtering logic here prevents the popup from becoming sluggish.
+
+Content Script (content_script.js): This is the scraper. It's a piece of JavaScript that gets injected directly into the RTO webpage. Its only job is to read the page's HTML, extract the relevant data (number, price, bidders), and send that raw data to the background script.
+
+Manifest (manifest.json): This is the configuration file for the extension. It tells Chrome what the extension is, what permissions it needs (activeTab, scripting), and where to find its core files.
+
+2. Data Flow
+Here's the step-by-step flow of information when you use the extension:
+
+User Action: The user navigates to the RTO portal page and clicks the extension icon. They select filters (e.g., "All digits same") and click the "Fetch Available Numbers" button in the popup.
+
+Message to Background: popup.js sends a message to background.js containing the action to perform ("fetchAndFilter") and the selected filters.
+
+Script Injection: background.js receives the message and uses the chrome.scripting.executeScript API to inject content_script.js into the current active browser tab (the RTO page).
+
+Scraping: The injected content_script.js runs. It scans the HTML of the RTO page, extracts the number data into an array of objects, and sends this raw data back to background.js.
+
+Filtering: background.js receives the raw scraped data. It applies the filter logic (e.g., isAscending, isAllSame) based on the filters it received from the popup in step 2.
+
+Response to Popup: background.js sends the final, filtered list of numbers back to popup.js.
+
+Display Results: popup.js receives the filtered data and dynamically creates the HTML cards to display each matching number in the UI.
+
+3. How to Adapt the Scraper (content_script.js)
+This is the most critical step to make the extension work on the real website. The current content_script.js uses mock data. You must replace this with real scraping logic.
+
+Your Action Plan:
+
+Open Developer Tools: Go to the actual RTO portal page where the numbers are listed. Right-click anywhere on the page and select "Inspect" (or press F12 or Ctrl+Shift+I). This will open the browser's developer tools.
+
+Identify the Structure: Use the "Elements" panel in the developer tools to examine the HTML. Find the table, list, or divs that contain the numbers. Look for patterns.
+
+Is each number in a <tr> (table row)?
+
+Do all the rows share a common class, like <tr class="number-info">?
+
+Inside each row, find the elements for the number, price, and bidders. Do they also have unique classes, like <td class="vehicle-number"> or <span class="price">?
+
+Find a CSS Selector: Your goal is to find a CSS selector that uniquely identifies the container for each number entry. For example, if all numbers are in table rows with the class number-entry, your main selector would be .number-entry.
+
+Update content_script.js:
+
+Open content_script.js.
+
+Find the section marked // START OF CODE TO BE REPLACED.
+
+Delete the line that calls getMockData().
+
+Uncomment the example code.
+
+Replace the placeholder selectors (.data-table tr.number-entry, .number-column, etc.) with the actual selectors you found in step 3.
+
+Test and Refine: Load your modified extension and try it on the RTO page. If it doesn't work, use console.log() inside content_script.js to debug what the selectors are finding (or not finding). Check the background script's console for errors.
+
+By following this process, you will successfully transition from the provided template to a powerful, working tool for your specific use case.
