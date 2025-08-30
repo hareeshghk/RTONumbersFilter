@@ -47,7 +47,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
 // --- Filtering Logic ---
 function filterData(data, filters) {
-    if (!filters.allSame && !filters.ascending) {
+    if (!filters.allSame && !filters.ascending && !filters.xxyy && !filters.xxxy && !filters.xyyy) {
         // If no filters are selected, return all data
         return data;
     }
@@ -58,8 +58,11 @@ function filterData(data, filters) {
 
         let matchesAllSame = !filters.allSame || isAllSame(numericPart);
         let matchesAscending = !filters.ascending || isAscending(numericPart);
+        let matchesXXYY = !filters.xxyy || isXXYY(numericPart);
+        let matchesXXXY = !filters.xxxy || isXXXY(numericPart);
+        let matchesXYYY = !filters.xyyy || isXYYY(numericPart);
 
-        return matchesAllSame && matchesAscending;
+        return matchesAllSame && matchesAscending && matchesXXYY && matchesXXXY && matchesXYYY;
     });
 }
 
@@ -83,4 +86,19 @@ function isAscending(s) {
         }
     }
     return true;
+}
+
+function isXXYY(s) {
+    if (s.length !== 4) return false;
+    return s[0] === s[1] && s[2] === s[3];
+}
+
+function isXXXY(s) {
+    if (s.length !== 4) return false;
+    return s[0] === s[1] && s[1] === s[2];
+}
+
+function isXYYY(s) {
+    if (s.length !== 4) return false;
+    return s[1] === s[2] && s[2] === s[3]
 }

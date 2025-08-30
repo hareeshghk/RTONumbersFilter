@@ -5,6 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const statusDiv = document.getElementById('status');
     const allSameCheckbox = document.getElementById('allSame');
     const ascendingCheckbox = document.getElementById('ascending');
+    const xxyyCheckbox = document.getElementById('xxyy');
+    const xxxyCheckbox = document.getElementById('xxxy');
+    const xyyyCheckbox = document.getElementById('xyyy');
 
     fetchButton.addEventListener('click', () => {
         statusDiv.textContent = 'Fetching and filtering numbers...';
@@ -14,7 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // Get filter values
         const filters = {
             allSame: allSameCheckbox.checked,
-            ascending: ascendingCheckbox.checked
+            ascending: ascendingCheckbox.checked,
+            xxyy: xxyyCheckbox.checked,
+            xxxy: xxxyCheckbox.checked,
+            xyyy: xyyyCheckbox.checked
         };
         
         // Send a message to the background script to start the process
