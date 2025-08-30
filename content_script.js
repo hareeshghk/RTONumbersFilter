@@ -5,10 +5,6 @@ function scrapeDataFromPage() {
     const scrapedData = [];
 
     // --- Start of Real Scraping Logic ---
-    // This logic is based on the structure of the "Fancy Numbers.html" sample file.
-    // It targets the specific table containing the vehicle number data.
-    // The selector `table[id$=':j_idt158']` is used because the ID seems partially dynamic.
-    
     const numberTableRows = document.querySelectorAll("tr");
     console.log(`RTO Finder: Found ${numberTableRows.length} rows in the table.`);
 
