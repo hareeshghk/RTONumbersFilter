@@ -1,4 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Fetch version from manifest and update UI
+    const manifestData = chrome.runtime.getManifest();
+    const versionElement = document.getElementById('version-display');
+    if (versionElement && manifestData.version) {
+        versionElement.textContent = `v${manifestData.version}`;
+    }
+
     const fetchButton = document.getElementById('fetchNumbersBtn');
     const resultsContainer = document.getElementById('results-container');
     const resultsBody = document.getElementById('results-body');

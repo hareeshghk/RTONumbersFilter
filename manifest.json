@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "RTO Fancy Number Finder",
-  "version": "1.0",
-  "description": "Finds and filters special RTO vehicle numbers from the official portal.",
+  "version": "0.0.0.1",
+  "description": "Finds and filters RTO vehicle numbers from the official portal.",
   "author": "Hareesh Kumar Gajulapalli",
   "homepage_url": "https://github.com/hareeshghk/RTONumbersFilter",
   "permissions": [
