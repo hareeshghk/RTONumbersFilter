@@ -171,13 +171,15 @@ Exclude Digits Examples:
 ### Project Structure
 ```
 RTONumbersFilter/
-├── manifest.json          # Extension configuration
-├── background.js          # Background service worker
-├── content_script.js      # Web page interaction
-├── popup.html            # Extension popup UI
-├── popup.js              # Popup functionality
-├── images/               # Extension icons
-└── README.md            # This file
+├── manifest.json              # Extension configuration
+├── background.js              # Background service worker
+├── content_script.js          # Web page interaction
+├── popup.html                # Extension popup UI
+├── popup.js                  # Popup functionality
+├── images/                   # Extension icons
+├── testArtifacts/           # Testing resources
+│   └── FancyNumbers.mhtml   # Sample RTO page for testing
+└── README.md                # This file
 ```
 
 ### Contributing
@@ -193,6 +195,23 @@ git clone https://github.com/hareeshghk/RTONumbersFilter.git
 cd RTONumbersFilter
 # Load as unpacked extension in Chrome
 ```
+
+### Testing the Extension
+For developers who want to test the extension without accessing a live RTO portal:
+
+1. **MHTML Test File**: The repository includes a sample MHTML file (`testArtifacts/FancyNumbers.mhtml`) that contains real RTO portal data
+2. **How to use**:
+   - Open Chrome and go to `file://` 
+   - Navigate to the `testArtifacts/FancyNumbers.mhtml` file in your local repository
+   - Open the file in Chrome (it will display as a webpage)
+   - Test the extension on this static page
+3. **Benefits**:
+   - ✅ No need for live RTO portal access
+   - ✅ Consistent test data for reliable testing
+   - ✅ Safe testing environment
+   - ✅ Offline development capability
+
+**Note**: The `FancyNumbers.mhtml` file contains sample vehicle numbers, prices, and bidder information that matches the structure of real RTO portals, allowing you to test all filtering functionality.
 
 ## 🎨 Screenshots
 
