@@ -91,19 +91,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const fragment = document.createDocumentFragment();
         numbers.forEach(num => {
             const row = document.createElement('tr');
-            row.className = 'bg-white border-b hover:bg-slate-50';
+            row.className = 'hover:bg-slate-50 transition-colors';
 
             const numberCell = document.createElement('td');
-            numberCell.className = 'px-4 py-2 font-mono font-medium text-slate-900';
+            numberCell.className = 'px-4 py-3 font-mono font-medium text-slate-900';
             numberCell.textContent = num.number;
 
             const priceCell = document.createElement('td');
-            priceCell.className = 'px-4 py-2 text-right text-green-700';
+            priceCell.className = 'px-4 py-3 text-right text-green-700 font-semibold';
             // Format price with Indian numbering system commas
             priceCell.textContent = new Intl.NumberFormat('en-IN').format(num.price);
 
             const applicantsCell = document.createElement('td');
-            applicantsCell.className = 'px-4 py-2 text-center font-bold text-blue-600';
+            applicantsCell.className = 'px-4 py-3 text-center font-bold text-blue-600';
             applicantsCell.textContent = num.applicants;
 
             row.appendChild(numberCell);
