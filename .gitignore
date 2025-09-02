@@ -1,0 +1,36 @@
+# Archive files
+*.zip
+*.rar
+*.7z
+*.tar.gz
+
+# Extension build artifacts
+*.crx
+*.pem
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# Node modules (if any)
+node_modules/
+
+# Build directories
+dist/
+build/
