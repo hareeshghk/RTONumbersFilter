@@ -2,6 +2,9 @@
 
 🚗 **Find and Filter Special Vehicle Registration Numbers | RTO Portal Number Filter**
 
+## 🚀 **[📥 INSTALL FROM CHROME WEB STORE](https://chromewebstore.google.com/detail/rto-fancy-number-finder/biiocmagibngmegaobpoifcikpjmppmm)**
+
+[![Chrome Web Store](https://img.shields.io/badge/Chrome%20Web%20Store-Download-brightgreen?style=for-the-badge&logo=googlechrome)](https://chromewebstore.google.com/detail/rto-fancy-number-finder/biiocmagibngmegaobpoifcikpjmppmm)
 [![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-blue.svg)](https://github.com/hareeshghk/RTONumbersFilter)
 [![Version](https://img.shields.io/badge/version-1.0-green.svg)](https://github.com/hareeshghk/RTONumbersFilter)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
@@ -75,6 +78,14 @@ When purchasing a new vehicle or seeking a special registration number through R
 ## 🚀 Quick Start
 
 ### Installation
+
+#### **Option 1: Chrome Web Store (Recommended)**
+1. **[📥 Install from Chrome Web Store](https://chromewebstore.google.com/detail/rto-fancy-number-finder/biiocmagibngmegaobpoifcikpjmppmm)**
+2. Click "Add to Chrome"
+3. The extension icon will appear in your browser toolbar
+4. You're ready to go!
+
+#### **Option 2: Developer Installation**
 1. Download or clone this repository
 2. Open Chrome and go to `chrome://extensions/`
 3. Enable "Developer mode"
@@ -199,17 +210,32 @@ cd RTONumbersFilter
 ### Testing the Extension
 For developers who want to test the extension without accessing a live RTO portal:
 
+#### **For Chrome Web Store Users:**
+1. **Enable File URL Access**: 
+   - Go to `chrome://extensions/`
+   - Find "RTO Fancy Number Finder" 
+   - Click "Details"
+   - Toggle ON "Allow access to file URLs"
+2. **Use Test File**:
+   - Download the repository
+   - Open `testArtifacts/FancyNumbers.mhtml` in Chrome (drag & drop or file://)
+   - Test the extension on this static page
+
+#### **For Developer Installation Users:**
 1. **MHTML Test File**: The repository includes a sample MHTML file (`testArtifacts/FancyNumbers.mhtml`) that contains real RTO portal data
 2. **How to use**:
    - Open Chrome and go to `file://` 
    - Navigate to the `testArtifacts/FancyNumbers.mhtml` file in your local repository
    - Open the file in Chrome (it will display as a webpage)
    - Test the extension on this static page
-3. **Benefits**:
-   - ✅ No need for live RTO portal access
-   - ✅ Consistent test data for reliable testing
-   - ✅ Safe testing environment
-   - ✅ Offline development capability
+
+#### **Testing Benefits:**
+- ✅ No need for live RTO portal access
+- ✅ Consistent test data for reliable testing
+- ✅ Safe testing environment
+- ✅ Offline development capability
+
+**⚠️ Important**: If using the **Chrome Web Store version**, you MUST enable "Allow access to file URLs" in extension settings for the MHTML test file to work.
 
 **Note**: The `FancyNumbers.mhtml` file contains sample vehicle numbers, prices, and bidder information that matches the structure of real RTO portals, allowing you to test all filtering functionality.
 
@@ -222,9 +248,10 @@ For developers who want to test the extension without accessing a live RTO porta
 
 ## 📞 Support & Contact
 
-- **GitHub Issues**: [Report bugs or request features](https://github.com/hareeshghk/RTONumbersFilter/issues)
-- **Developer**: Hareesh GHK
-- **Repository**: [RTONumbersFilter](https://github.com/hareeshghk/RTONumbersFilter)
+- **🏪 Chrome Web Store**: [Install Extension](https://chromewebstore.google.com/detail/rto-fancy-number-finder/biiocmagibngmegaobpoifcikpjmppmm)
+- **🐛 GitHub Issues**: [Report bugs or request features](https://github.com/hareeshghk/RTONumbersFilter/issues)
+- **👨‍💻 Developer**: Hareesh GHK
+- **📂 Repository**: [RTONumbersFilter](https://github.com/hareeshghk/RTONumbersFilter)
 
 ## 📝 License
 
@@ -233,6 +260,19 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🌟 Keywords for Search Discovery
 
 `RTO fancy numbers`, `vehicle registration filter`, `car number patterns`, `lucky vehicle numbers India`, `RTO portal extension`, `Chrome extension RTO`, `fancy number finder`, `vehicle auction numbers`, `car registration patterns`, `Indian RTO numbers`, `special vehicle numbers`, `number pattern matching`, `vehicle number search tool`
+
+---
+
+## 🎉 **Ready to Find Your Perfect Vehicle Number?**
+
+### **📥 [INSTALL FROM CHROME WEB STORE](https://chromewebstore.google.com/detail/rto-fancy-number-finder/biiocmagibngmegaobpoifcikpjmppmm)**
+
+**Quick Setup:**
+1. Click the link above to install
+2. Visit your RTO portal
+3. Click the extension icon
+4. Select your preferred number patterns
+5. Find your perfect vehicle number!
 
 ---
 
